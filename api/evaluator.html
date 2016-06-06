@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OOP Interface &mdash; sklearn-evaluation 0.3 documentation</title>
+  <title>ClassifierEvaluator &mdash; sklearn-evaluation 0.3 documentation</title>
   
 
   
@@ -30,7 +30,9 @@
   
 
   
-    <link rel="top" title="sklearn-evaluation 0.3 documentation" href="../index.html"/> 
+    <link rel="top" title="sklearn-evaluation 0.3 documentation" href="../index.html"/>
+        <link rel="up" title="API Reference" href="../api.html"/>
+        <link rel="prev" title="Tables" href="table.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -79,9 +81,14 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">Tables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ClassifierEvaluator</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -112,7 +119,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>OOP Interface</li>
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
+      
+    <li>ClassifierEvaluator</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -126,11 +135,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-sklearn_evaluation.evaluator">
-<span id="oop-interface"></span><h1>OOP Interface<a class="headerlink" href="#module-sklearn_evaluation.evaluator" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="classifierevaluator">
+<h1>ClassifierEvaluator<a class="headerlink" href="#classifierevaluator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator">
-<em class="property">class </em><code class="descclassname">sklearn_evaluation.evaluator.</code><code class="descname">ClassifierEvaluator</code><span class="sig-paren">(</span><em>estimator=None</em>, <em>y_true=None</em>, <em>y_pred=None</em>, <em>y_score=None</em>, <em>feature_names=None</em>, <em>target_names=None</em>, <em>estimator_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator" title="Permalink to this definition">¶</a></dt>
+<dt id="sklearn_evaluation.ClassifierEvaluator">
+<em class="property">class </em><code class="descclassname">sklearn_evaluation.</code><code class="descname">ClassifierEvaluator</code><span class="sig-paren">(</span><em>estimator=None</em>, <em>y_true=None</em>, <em>y_pred=None</em>, <em>y_score=None</em>, <em>feature_names=None</em>, <em>target_names=None</em>, <em>estimator_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encapsuates results from an estimator on a testing set to provide a
 simplified API from other modules. All parameters are optional, just
 fill the ones you need for your analysis.</p>
@@ -138,91 +147,103 @@ fill the ones you need for your analysis.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>estimator</strong> (<em>sklearn estimator</em>) &#8211; This object is only used to get feature importances via
-<a href="#id1"><span class="problematic" id="id2">model.feature_parameters_</span></a></li>
-<li><strong>y_true</strong> (<em>array-like</em>) &#8211; Target predicted classes (estimator predictions).</li>
-<li><strong>y_pred</strong> (<em>array-like</em>) &#8211; <p>Correct target values (ground truth).
-y_score : array-like</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>estimator</strong> : sklearn estimator</p>
 <blockquote>
-<div>Target scores (estimador predictions).</div></blockquote>
-</li>
-<li><strong>feature_names</strong> (<em>array-like</em>) &#8211; Feature names.</li>
-<li><strong>target_names</strong> (<em>list</em>) &#8211; List containing the names of the target classes</li>
-<li><strong>estimator_name</strong> (<em>str</em>) &#8211; Identifier for the model. This can be later used to idenfity the
-estimator when generaing reports.</li>
-</ul>
+<div><p>Must have a <code class="docutils literal"><span class="pre">feature_importances_</span></code> attribute.</p>
+</div></blockquote>
+<p><strong>y_true</strong> : array-like</p>
+<blockquote>
+<div><p>Target predicted classes (estimator predictions).</p>
+</div></blockquote>
+<p><strong>y_pred</strong> : array-like</p>
+<blockquote>
+<div><p>Correct target values (ground truth).</p>
+</div></blockquote>
+<p><strong>y_score</strong> : array-like</p>
+<blockquote>
+<div><p>Target scores (estimador predictions).</p>
+</div></blockquote>
+<p><strong>feature_names</strong> : array-like</p>
+<blockquote>
+<div><p>Feature names.</p>
+</div></blockquote>
+<p><strong>target_names</strong> : list</p>
+<blockquote>
+<div><p>List containing the names of the target classes</p>
+</div></blockquote>
+<p><strong>estimator_name</strong> : str</p>
+<blockquote class="last">
+<div><p>Identifier for the model. This can be later used to idenfity the
+estimator when generaing reports.</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.confusion_matrix">
-<code class="descname">confusion_matrix</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.confusion_matrix" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="sklearn_evaluation.ClassifierEvaluator.confusion_matrix">
+<code class="descname">confusion_matrix</code><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator.confusion_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Confusion matrix plot</p>
+</dd></dl>
 
 <dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.estimator">
-<code class="descname">estimator</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.estimator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="sklearn_evaluation.ClassifierEvaluator.estimator_class">
+<code class="descname">estimator_class</code><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator.estimator_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimator class (e.g. sklearn.ensemble.RandomForestClassifier)</p>
+</dd></dl>
 
 <dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.estimator_class">
-<code class="descname">estimator_class</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.estimator_class" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="sklearn_evaluation.ClassifierEvaluator.estimator_type">
+<code class="descname">estimator_type</code><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator.estimator_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimator name (e.g. RandomForestClassifier)</p>
+</dd></dl>
 
 <dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.estimator_name">
-<code class="descname">estimator_name</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.estimator_name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="sklearn_evaluation.ClassifierEvaluator.feature_importances">
+<code class="descname">feature_importances</code><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator.feature_importances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feature importances plot</p>
+</dd></dl>
 
 <dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.estimator_type">
-<code class="descname">estimator_type</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.estimator_type" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.feature_importances">
-<code class="descname">feature_importances</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.feature_importances" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.feature_importances_table">
-<code class="descname">feature_importances_table</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.feature_importances_table" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.feature_names">
-<code class="descname">feature_names</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.feature_names" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="sklearn_evaluation.ClassifierEvaluator.feature_importances_table">
+<code class="descname">feature_importances_table</code><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator.feature_importances_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feature importances table</p>
+</dd></dl>
 
 <dl class="method">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.generate_report">
-<code class="descname">generate_report</code><span class="sig-paren">(</span><em>template</em>, <em>path=None</em>, <em>style=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.generate_report" title="Permalink to this definition">¶</a></dt>
+<dt id="sklearn_evaluation.ClassifierEvaluator.generate_report">
+<code class="descname">generate_report</code><span class="sig-paren">(</span><em>template</em>, <em>path=None</em>, <em>style=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator.generate_report" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div>Generate HTML report</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<em>markdown-formatted string or path to the template</em>) &#8211; file used for rendering the report. Any attribute of this
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>template</strong> : markdown-formatted string or path to the template</p>
+<blockquote>
+<div><p>file used for rendering the report. Any attribute of this
 object can be included in the report using the {tag} format.
 e.g.&#8217;# Report{estimator_name}{roc}{precision_recall}&#8217;.
 Apart from every attribute, you can also use {date} and {date_utc}
 tags to include the date for the report generation using local
-and UTC timezones repectively.</li>
-<li><strong>path</strong> (<em>str</em>) &#8211; Path to save the HTML report. If None, the function will return
-the HTML code.</li>
-<li><strong>style</strong> (<em>str</em>) &#8211; Path to a css file to apply style to the report. If None, no
-style will be applied</li>
-</ul>
+and UTC timezones repectively.</p>
+</div></blockquote>
+<p><strong>path</strong> : str</p>
+<blockquote>
+<div><p>Path to save the HTML report. If None, the function will return
+the HTML code.</p>
+</div></blockquote>
+<p><strong>style: str</strong></p>
+<blockquote>
+<div><p>Path to a css file to apply style to the report. If None, no
+style will be applied</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>report</strong> &#8211; Returns the contents of the report if path is None.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">report: str</p>
+<blockquote class="last">
+<div><p>Returns the contents of the report if path is None.</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
@@ -230,39 +251,22 @@ style will be applied</li>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.precision_at_proportions">
-<code class="descname">precision_at_proportions</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.precision_at_proportions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="sklearn_evaluation.ClassifierEvaluator.precision_at_proportions">
+<code class="descname">precision_at_proportions</code><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator.precision_at_proportions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Precision at proportions plot</p>
+</dd></dl>
 
 <dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.precision_recall">
-<code class="descname">precision_recall</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.precision_recall" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="sklearn_evaluation.ClassifierEvaluator.precision_recall">
+<code class="descname">precision_recall</code><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator.precision_recall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Precision-recall plot</p>
+</dd></dl>
 
 <dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.roc">
-<code class="descname">roc</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.roc" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.target_names">
-<code class="descname">target_names</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.target_names" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.y_pred">
-<code class="descname">y_pred</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.y_pred" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.y_score">
-<code class="descname">y_score</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.y_score" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="sklearn_evaluation.evaluator.ClassifierEvaluator.y_true">
-<code class="descname">y_true</code><a class="headerlink" href="#sklearn_evaluation.evaluator.ClassifierEvaluator.y_true" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="sklearn_evaluation.ClassifierEvaluator.roc">
+<code class="descname">roc</code><a class="headerlink" href="#sklearn_evaluation.ClassifierEvaluator.roc" title="Permalink to this definition">¶</a></dt>
+<dd><p>ROC plot</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -272,6 +276,13 @@ style will be applied</li>
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="table.html" class="btn btn-neutral" title="Tables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

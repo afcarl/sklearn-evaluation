@@ -1,6 +1,5 @@
-OOP Interface
-=============
+ClassifierEvaluator
+=========================
 
-.. automodule:: sklearn_evaluation.evaluator
+.. autoclass:: sklearn_evaluation.ClassifierEvaluator
     :members:
-    :undoc-members:

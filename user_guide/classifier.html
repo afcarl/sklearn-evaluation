@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Evaluating a classifier &mdash; sklearn-evaluation 0.3 documentation</title>
+  <title>Classifier evaluation &mdash; sklearn-evaluation 0.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
     <link rel="top" title="sklearn-evaluation 0.3 documentation" href="../index.html"/>
         <link rel="up" title="User Guide" href="../user_guide.html"/>
-        <link rel="next" title="Evaluating Grid Search Results" href="grid_search.html"/>
+        <link rel="next" title="Classifier evaluation using the OOP interface (report generation)" href="report.html"/>
         <link rel="prev" title="User Guide" href="../user_guide.html"/> 
 
   
@@ -84,9 +84,11 @@
             
                 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../user_guide.html">User Guide</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Evaluating a classifier</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Classifier evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report.html">Classifier evaluation using the OOP interface (report generation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_vs_oop.html">Functional vs Object Oriented interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grid_search.html">Evaluating Grid Search Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="report.html">Report generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib.html">Advanced usage using matplotlib</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
@@ -122,7 +124,7 @@
       
           <li><a href="../user_guide.html">User Guide</a> &raquo;</li>
       
-    <li>Evaluating a classifier</li>
+    <li>Classifier evaluation</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -136,20 +138,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="evaluating-a-classifier">
-<h1>Evaluating a classifier<a class="headerlink" href="#evaluating-a-classifier" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+  <div class="section" id="classifier-evaluation">
+<h1>Classifier evaluation<a class="headerlink" href="#classifier-evaluation" title="Permalink to this headline">¶</a></h1>
+<p>sklearn-evluation has two main modules for evaluating classifiers: <a class="reference internal" href="../api/plot.html#module-sklearn_evaluation.plot" title="sklearn_evaluation.plot"><code class="xref py py-mod docutils literal"><span class="pre">sklearn_evaluation.plot</span></code></a> and
+<a class="reference internal" href="../api/table.html#module-sklearn_evaluation.table" title="sklearn_evaluation.table"><code class="xref py py-mod docutils literal"><span class="pre">sklearn_evaluation.table</span></code></a>, let&#8217;s see an example of how to use them.</p>
+<p>First, let&#8217;s load some data and split it in training and test set.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_classification</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.65</span><span class="p">)</span>
 
-<span class="gp">In [2]: </span><span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
+<span class="gp">In [2]: </span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="gp">In [3]: </span><span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+<span class="gp">In [3]: </span><span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="go"># shuffle and split training and test sets</span>
-<span class="gp">In [4]: </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">   ...: </span>                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">   ...: </span>
-
-<span class="gp">In [5]: </span><span class="n">est</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="gp">In [4]: </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, we are going to train the data using one of the scikit-learn classifiers.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">est</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
 
 <span class="gp">In [6]: </span><span class="n">est</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
@@ -159,30 +164,68 @@
 <span class="go">            min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=1,</span>
 <span class="go">            oob_score=False, random_state=None, verbose=0,</span>
 <span class="go">            warm_start=False)</span>
+</pre></div>
+</div>
+<p>Most of the functions require us to pass the class predictions for the test
+set (<code class="docutils literal"><span class="pre">y_pred</span></code>), the scores assigned (<code class="docutils literal"><span class="pre">y_score</span></code>) and the ground truth classes
+(<code class="docutils literal"><span class="pre">y_true</span></code>), let&#8217;s define such variables.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="gp">In [7]: </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="gp">In [8]: </span><span class="n">y_score</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="gp">In [8]: </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">y_test</span>
-
-<span class="gp">In [9]: </span><span class="n">y_score</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="gp">In [10]: </span><span class="n">plot</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="gh">Out[10]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x10e649f50&gt;</span>
+<span class="gp">In [9]: </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">y_test</span>
+</pre></div>
+</div>
+<p>We can start evaluating our model, the following example shows how to plot
+a confusion matrix.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">plot</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="gh">Out[10]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x10e3d5550&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/cm.png" src="../_images/cm.png" />
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">plot</span><span class="o">.</span><span class="n">feature_importances</span><span class="p">(</span><span class="n">est</span><span class="p">)</span>
-<span class="gh">Out[11]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x110bb7c50&gt;</span>
+<p>Some classifiers (such as <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.17.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code></a>) have feature importances, we can plot
+then passing the estimator object to the feature_importances function.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">plot</span><span class="o">.</span><span class="n">feature_importances</span><span class="p">(</span><span class="n">est</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gh">Out[11]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x10fe4ae48&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/fi.png" src="../_images/fi.png" />
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">plot</span><span class="o">.</span><span class="n">precision_recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
-<span class="gh">Out[12]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1113bef50&gt;</span>
+<p>A feature importances function is also available in the table module.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="k">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">feature_importances</span><span class="p">(</span><span class="n">est</span><span class="p">))</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| feature_name   |   importance |      std_ |</span>
+<span class="go">+================+==============+===========+</span>
+<span class="go">| Feature 2      |    0.167484  | 0.0775959 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| Feature 4      |    0.167153  | 0.0829903 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| Feature 5      |    0.146767  | 0.0953047 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| Feature 8      |    0.123133  | 0.0703522 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| Feature 9      |    0.116387  | 0.0812932 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| Feature 10     |    0.0802888 | 0.0590891 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| Feature 3      |    0.0687848 | 0.0604897 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| Feature 7      |    0.0573887 | 0.0496753 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| Feature 6      |    0.0568963 | 0.0755595 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+<span class="go">| Feature 1      |    0.0157177 | 0.0192013 |</span>
+<span class="go">+----------------+--------------+-----------+</span>
+</pre></div>
+</div>
+<p>Now, let&#8217;s see how to generate two of the most common plots for evaluating
+classifiers: Precision-Recall and ROC.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">plot</span><span class="o">.</span><span class="n">precision_recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x10fea6f60&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/pr.png" src="../_images/pr.png" />
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">plot</span><span class="o">.</span><span class="n">roc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x111588dd0&gt;</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">plot</span><span class="o">.</span><span class="n">roc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
+<span class="gh">Out[14]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x10fec2518&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/roc.png" src="../_images/roc.png" />
@@ -195,7 +238,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="grid_search.html" class="btn btn-neutral float-right" title="Evaluating Grid Search Results" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="report.html" class="btn btn-neutral float-right" title="Classifier evaluation using the OOP interface (report generation)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../user_guide.html" class="btn btn-neutral" title="User Guide" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
