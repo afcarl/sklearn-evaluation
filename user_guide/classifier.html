@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Classifier evaluation &mdash; sklearn-evaluation 0.4dev documentation</title>
+  <title>Classifier evaluation &mdash; sklearn-evaluation 0.4 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="sklearn-evaluation 0.4dev documentation" href="../index.html"/>
+    <link rel="top" title="sklearn-evaluation 0.4 documentation" href="../index.html"/>
         <link rel="up" title="User Guide" href="../user_guide.html"/>
         <link rel="next" title="Classifier evaluation using the OOP interface (report generation)" href="report.html"/>
         <link rel="prev" title="User Guide" href="../user_guide.html"/> 
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.4dev
+                0.4
               </div>
             
           
@@ -179,14 +179,14 @@ set (<code class="docutils literal"><span class="pre">y_pred</span></code>), the
 <p>We can start evaluating our model, the following example shows how to plot
 a confusion matrix.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">plot</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="gh">Out[10]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b105783ba50&gt;</span>
+<span class="gh">Out[10]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b3c31508950&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/cm.png" src="../_images/cm.png" />
 <p>Some classifiers (such as <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.18.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code></a>) have feature importances, we can plot
 then passing the estimator object to the feature_importances function.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">plot</span><span class="o">.</span><span class="n">feature_importances</span><span class="p">(</span><span class="n">est</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="gh">Out[11]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b1057b95210&gt;</span>
+<span class="gh">Out[11]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b3c314ae750&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/fi.png" src="../_images/fi.png" />
@@ -195,37 +195,37 @@ then passing the estimator object to the feature_importances function.</p>
 <span class="go">+----------------+--------------+-----------+</span>
 <span class="go">| feature_name   |   importance |      std_ |</span>
 <span class="go">+================+==============+===========+</span>
-<span class="go">| Feature 9      |    0.1325    | 0.0795135 |</span>
+<span class="go">| Feature 8      |    0.182307  | 0.0989568 |</span>
 <span class="go">+----------------+--------------+-----------+</span>
-<span class="go">| Feature 10     |    0.125151  | 0.0691885 |</span>
+<span class="go">| Feature 2      |    0.136576  | 0.0705696 |</span>
 <span class="go">+----------------+--------------+-----------+</span>
-<span class="go">| Feature 7      |    0.122706  | 0.0607764 |</span>
+<span class="go">| Feature 10     |    0.129999  | 0.0742116 |</span>
 <span class="go">+----------------+--------------+-----------+</span>
-<span class="go">| Feature 5      |    0.12259   | 0.0552958 |</span>
+<span class="go">| Feature 3      |    0.117664  | 0.0961082 |</span>
 <span class="go">+----------------+--------------+-----------+</span>
-<span class="go">| Feature 1      |    0.103916  | 0.0610074 |</span>
+<span class="go">| Feature 7      |    0.104714  | 0.0337038 |</span>
 <span class="go">+----------------+--------------+-----------+</span>
-<span class="go">| Feature 6      |    0.102684  | 0.0671926 |</span>
+<span class="go">| Feature 6      |    0.0993664 | 0.0598394 |</span>
 <span class="go">+----------------+--------------+-----------+</span>
-<span class="go">| Feature 4      |    0.0909497 | 0.0413172 |</span>
+<span class="go">| Feature 9      |    0.0705834 | 0.0510898 |</span>
 <span class="go">+----------------+--------------+-----------+</span>
-<span class="go">| Feature 3      |    0.0743337 | 0.059611  |</span>
+<span class="go">| Feature 1      |    0.0655201 | 0.049086  |</span>
 <span class="go">+----------------+--------------+-----------+</span>
-<span class="go">| Feature 2      |    0.0731344 | 0.040949  |</span>
+<span class="go">| Feature 4      |    0.0578956 | 0.0590588 |</span>
 <span class="go">+----------------+--------------+-----------+</span>
-<span class="go">| Feature 8      |    0.0520361 | 0.0460296 |</span>
+<span class="go">| Feature 5      |    0.0353745 | 0.0527885 |</span>
 <span class="go">+----------------+--------------+-----------+</span>
 </pre></div>
 </div>
 <p>Now, let&#8217;s see how to generate two of the most common plots for evaluating
 classifiers: Precision-Recall and ROC.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">plot</span><span class="o">.</span><span class="n">precision_recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b1057826350&gt;</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b3c3117ee50&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/pr.png" src="../_images/pr.png" />
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">plot</span><span class="o">.</span><span class="n">roc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
-<span class="gh">Out[14]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b10581c2390&gt;</span>
+<span class="gh">Out[14]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b3c31ae9150&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/roc1.png" src="../_images/roc1.png" />
@@ -272,7 +272,7 @@ classifiers: Precision-Recall and ROC.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4dev',
+            VERSION:'0.4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

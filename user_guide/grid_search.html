@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Evaluating Grid Search Results &mdash; sklearn-evaluation 0.4dev documentation</title>
+  <title>Evaluating Grid Search Results &mdash; sklearn-evaluation 0.4 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="sklearn-evaluation 0.4dev documentation" href="../index.html"/>
+    <link rel="top" title="sklearn-evaluation 0.4 documentation" href="../index.html"/>
         <link rel="up" title="User Guide" href="../user_guide.html"/>
         <link rel="next" title="Advanced usage using matplotlib" href="matplotlib.html"/>
         <link rel="prev" title="Functional vs Object Oriented interface" href="func_vs_oop.html"/> 
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.4dev
+                0.4
               </div>
             
           
@@ -199,7 +199,7 @@ the estimator itself) we can get the results using the <code class="xref py py-a
 change, let&#8217;s see how the number of trees in the Random Forest affects
 the performance of the model.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">plot</span><span class="o">.</span><span class="n">grid_search</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">change</span><span class="o">=</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="go"> Out[9]: &lt;matplotlib.axes._subplots.AxesSubplot at 0x2b10581d8a50&gt;</span>
+<span class="go"> Out[9]: &lt;matplotlib.axes._subplots.AxesSubplot at 0x2b3c314be710&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/gs_1.png" src="../_images/gs_1.png" />
@@ -210,7 +210,7 @@ that the hyperparameter in change can also appear in subset).</p>
 <span class="gp">   ....: </span>                         <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;gini&#39;</span><span class="p">},</span>
 <span class="gp">   ....: </span>                 <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 <span class="gp">   ....: </span>
-<span class="gh">Out[10]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b105785dfd0&gt;</span>
+<span class="gh">Out[10]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b3c31beed90&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/gs_2.png" src="../_images/gs_2.png" />
@@ -221,7 +221,7 @@ to subset max_features to one single value.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">plot</span><span class="o">.</span><span class="n">grid_search</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">change</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">,</span> <span class="s1">&#39;criterion&#39;</span><span class="p">),</span>
 <span class="gp">   ....: </span>                 <span class="n">subset</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">})</span>
 <span class="gp">   ....: </span>
-<span class="gh">Out[11]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b105820d4d0&gt;</span>
+<span class="gh">Out[11]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b3c3138a1d0&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/gs_3.png" src="../_images/gs_3.png" />
@@ -268,7 +268,7 @@ to subset max_features to one single value.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4dev',
+            VERSION:'0.4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
