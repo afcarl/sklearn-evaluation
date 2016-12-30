@@ -1,0 +1,831 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Plotting &mdash; sklearn-evaluation 0.4dev documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="sklearn-evaluation 0.4dev documentation" href="../index.html"/>
+        <link rel="up" title="API Reference" href="../api.html"/>
+        <link rel="next" title="Tables" href="table.html"/>
+        <link rel="prev" title="API Reference" href="../api.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> sklearn-evaluation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluator.html">ClassifierEvaluator</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">sklearn-evaluation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
+      
+    <li>Plotting</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api/plot.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-sklearn_evaluation.plot">
+<span id="plotting"></span><h1>Plotting<a class="headerlink" href="#module-sklearn_evaluation.plot" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sklearn_evaluation.plot.confusion_matrix">
+<code class="descclassname">sklearn_evaluation.plot.</code><code class="descname">confusion_matrix</code><span class="sig-paren">(</span><em>y_true</em>, <em>y_pred</em>, <em>target_names=None</em>, <em>normalize=False</em>, <em>cmap=None</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.plot.confusion_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot confustion matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>Correct target values (ground truth).</p>
+</div></blockquote>
+<p><strong>y_pred</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>Target predicted classes (estimator predictions).</p>
+</div></blockquote>
+<p><strong>target_names</strong> : list</p>
+<blockquote>
+<div><p>List containing the names of the target classes. List must be in order
+e.g. <code class="docutils literal"><span class="pre">['Label</span> <span class="pre">for</span> <span class="pre">class</span> <span class="pre">0',</span> <span class="pre">'Label</span> <span class="pre">for</span> <span class="pre">class</span> <span class="pre">1']</span></code>. If <code class="docutils literal"><span class="pre">None</span></code>,
+generic labels will be generated e.g. <code class="docutils literal"><span class="pre">['Class</span> <span class="pre">0',</span> <span class="pre">'Class</span> <span class="pre">1']</span></code></p>
+</div></blockquote>
+<p><strong>ax: matplotlib Axes</strong></p>
+<blockquote>
+<div><p>Axes object to draw the plot onto, otherwise uses current Axes</p>
+</div></blockquote>
+<p><strong>normalize</strong> : bool</p>
+<blockquote>
+<div><p>Normalize the confusion matrix</p>
+</div></blockquote>
+<p><strong>cmap</strong> : matplotlib Colormap</p>
+<blockquote>
+<div><p>If <code class="docutils literal"><span class="pre">None</span></code> uses a modified version of matplotlib&#8217;s OrRd colormap.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ax: matplotlib Axes</p>
+<blockquote class="last">
+<div><p>Axes containing the plot</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">from</span> <span class="nn">sklearn_evaluation</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_classification</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.65</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">est</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_score</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">y_test</span>
+
+<span class="n">plot</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/confusion_matrix.png" src="../_images/confusion_matrix.png" />
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sklearn_evaluation.plot.feature_importances">
+<code class="descclassname">sklearn_evaluation.plot.</code><code class="descname">feature_importances</code><span class="sig-paren">(</span><em>data</em>, <em>top_n=None</em>, <em>feature_names=None</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.plot.feature_importances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get and order feature importances from a scikit-learn model
+or from an array-like structure. If data is a scikit-learn model with
+sub-estimators (e.g. RandomForest, AdaBoost) the function will compute the
+standard deviation of each feature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : sklearn model or array-like structure</p>
+<blockquote>
+<div><p>Object to get the data from.</p>
+</div></blockquote>
+<p><strong>top_n</strong> : int</p>
+<blockquote>
+<div><p>Only get results for the top_n features.</p>
+</div></blockquote>
+<p><strong>feature_names</strong> : array-like</p>
+<blockquote>
+<div><p>Feature names</p>
+</div></blockquote>
+<p><strong>ax</strong> : matplotlib Axes</p>
+<blockquote>
+<div><p>Axes object to draw the plot onto, otherwise uses current Axes</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ax: matplotlib Axes</p>
+<blockquote class="last">
+<div><p>Axes containing the plot</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">from</span> <span class="nn">sklearn_evaluation</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_classification</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.65</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">est</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="o">.</span><span class="n">feature_importances</span><span class="p">(</span><span class="n">est</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/feature_importances.png" src="../_images/feature_importances.png" />
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sklearn_evaluation.plot.precision_recall">
+<code class="descclassname">sklearn_evaluation.plot.</code><code class="descname">precision_recall</code><span class="sig-paren">(</span><em>y_true</em>, <em>y_score</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.plot.precision_recall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot precision-recall curve.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>Correct target values (ground truth).</p>
+</div></blockquote>
+<p><strong>y_score</strong> : array-like, shape = [n_samples] or [n_samples, 2] for binary</p>
+<blockquote>
+<div><blockquote>
+<div><p>classification or [n_samples, n_classes] for multiclass</p>
+</div></blockquote>
+<p>Target scores (estimator predictions).</p>
+</div></blockquote>
+<p><strong>ax</strong> : matplotlib Axes</p>
+<blockquote>
+<div><p>Axes object to draw the plot onto, otherwise uses current Axes</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ax: matplotlib Axes</p>
+<blockquote class="last">
+<div><p>Axes containing the plot</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>It is assumed that the y_score parameter columns are in order. For example,
+if <code class="docutils literal"><span class="pre">y_true</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2]</span></code>, then the first column in y_score
+must countain the scores for class 0, second column for class 1 and so on.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">from</span> <span class="nn">sklearn_evaluation</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_classification</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.65</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">est</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_score</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">y_test</span>
+
+<span class="n">plot</span><span class="o">.</span><span class="n">precision_recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/precision_recall.png" src="../_images/precision_recall.png" />
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sklearn_evaluation.plot.roc">
+<code class="descclassname">sklearn_evaluation.plot.</code><code class="descname">roc</code><span class="sig-paren">(</span><em>y_true</em>, <em>y_score</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.plot.roc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot ROC curve.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>Correct target values (ground truth).</p>
+</div></blockquote>
+<p><strong>y_score</strong> : array-like, shape = [n_samples] or [n_samples, 2] for binary</p>
+<blockquote>
+<div><blockquote>
+<div><p>classification or [n_samples, n_classes] for multiclass</p>
+</div></blockquote>
+<p>Target scores (estimator predictions).</p>
+</div></blockquote>
+<p><strong>ax: matplotlib Axes</strong></p>
+<blockquote>
+<div><p>Axes object to draw the plot onto, otherwise uses current Axes</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ax: matplotlib Axes</p>
+<blockquote class="last">
+<div><p>Axes containing the plot</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>It is assumed that the y_score parameter columns are in order. For example,
+if <code class="docutils literal"><span class="pre">y_true</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2]</span></code>, then the first column in y_score
+must countain the scores for class 0, second column for class 1 and so on.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">from</span> <span class="nn">sklearn_evaluation</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_classification</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.65</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">est</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_score</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">y_test</span>
+
+<span class="n">plot</span><span class="o">.</span><span class="n">roc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/roc.png" src="../_images/roc.png" />
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sklearn_evaluation.plot.precision_at_proportions">
+<code class="descclassname">sklearn_evaluation.plot.</code><code class="descname">precision_at_proportions</code><span class="sig-paren">(</span><em>y_true</em>, <em>y_score</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.plot.precision_at_proportions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot precision values at different proportions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like</p>
+<blockquote>
+<div><p>Correct target values (ground truth).</p>
+</div></blockquote>
+<p><strong>y_score</strong> : array-like</p>
+<blockquote>
+<div><p>Target scores (estimator predictions).</p>
+</div></blockquote>
+<p><strong>ax</strong> : matplotlib Axes</p>
+<blockquote>
+<div><p>Axes object to draw the plot onto, otherwise uses current Axes</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ax: matplotlib Axes</p>
+<blockquote class="last">
+<div><p>Axes containing the plot</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sklearn_evaluation.plot.grid_search">
+<code class="descclassname">sklearn_evaluation.plot.</code><code class="descname">grid_search</code><span class="sig-paren">(</span><em>grid_scores</em>, <em>change</em>, <em>subset=None</em>, <em>kind='line'</em>, <em>cmap=None</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.plot.grid_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot results from a sklearn grid search by changing two parameters at most.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>grid_scores</strong> : list of named tuples</p>
+<blockquote>
+<div><p>Results from a sklearn grid search (get them using the
+<cite>grid_scores_</cite> parameter)</p>
+</div></blockquote>
+<p><strong>change</strong> : str or iterable with len&lt;=2</p>
+<blockquote>
+<div><p>Parameter to change</p>
+</div></blockquote>
+<p><strong>subset</strong> : dictionary-like</p>
+<blockquote>
+<div><p>parameter-value(s) pairs to subset from grid_scores.
+(e.g. <code class="docutils literal"><span class="pre">{'n_estimartors':</span> <span class="pre">[1,</span> <span class="pre">10]}</span></code>), if None all combinations will be
+used.</p>
+</div></blockquote>
+<p><strong>kind</strong> : [&#8216;line&#8217;, &#8216;bar&#8217;]</p>
+<blockquote>
+<div><p>This only applies whe change is a single parameter. Changes the
+type of plot</p>
+</div></blockquote>
+<p><strong>cmap</strong> : matplotlib Colormap</p>
+<blockquote>
+<div><p>This only applies when change are two parameters. Colormap used for
+the matrix. If None uses a modified version of matplotlib&#8217;s OrRd
+colormap.</p>
+</div></blockquote>
+<p><strong>ax: matplotlib Axes</strong></p>
+<blockquote>
+<div><p>Axes object to draw the plot onto, otherwise uses current Axes</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ax: matplotlib Axes</p>
+<blockquote class="last">
+<div><p>Axes containing the plot</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+
+<span class="kn">from</span> <span class="nn">sklearn_evaluation.plot</span> <span class="kn">import</span> <span class="n">grid_search</span>
+
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="s1">&#39;log2&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">est</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">est</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">#clf.fit(iris.data, iris.target)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_classification</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">grid_scores</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span>
+
+<span class="c1"># changing numeric parameter without any restrictions</span>
+<span class="c1"># in the rest of the parameter set</span>
+<span class="n">to_vary</span> <span class="o">=</span> <span class="s1">&#39;n_estimators&#39;</span>
+<span class="n">grid_search</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">to_vary</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/grid_search_00_00.png" src="../_images/grid_search_00_00.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># you can also use bars</span>
+<span class="n">grid_search</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">to_vary</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/grid_search_01_00.png" src="../_images/grid_search_01_00.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># changing a categorical variable</span>
+<span class="c1"># without any constraints</span>
+<span class="n">to_vary</span> <span class="o">=</span> <span class="s1">&#39;criterion&#39;</span>
+<span class="n">grid_search</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">to_vary</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/grid_search_02_00.png" src="../_images/grid_search_02_00.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># bar</span>
+<span class="n">grid_search</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">to_vary</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/grid_search_03_00.png" src="../_images/grid_search_03_00.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># varying a numerical parameter but constraining</span>
+<span class="c1"># the rest of the parameter set</span>
+<span class="n">to_vary</span> <span class="o">=</span> <span class="s1">&#39;n_estimators&#39;</span>
+<span class="n">to_keep</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;gini&#39;</span><span class="p">}</span>
+<span class="n">grid_search</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">to_vary</span><span class="p">,</span> <span class="n">to_keep</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/grid_search_04_00.png" src="../_images/grid_search_04_00.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># same as above but letting max_features to have two values</span>
+<span class="n">to_keep</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="s1">&#39;log2&#39;</span><span class="p">],</span> <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;gini&#39;</span><span class="p">}</span>
+<span class="n">grid_search</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">to_vary</span><span class="p">,</span> <span class="n">to_keep</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/grid_search_05_00.png" src="../_images/grid_search_05_00.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># varying two parameters - you can only show this as a</span>
+<span class="c1"># matrix so the kind parameter will be ignored</span>
+<span class="n">to_vary</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">,</span> <span class="s1">&#39;criterion&#39;</span><span class="p">)</span>
+<span class="n">to_keep</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">}</span>
+<span class="n">grid_search</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">to_vary</span><span class="p">,</span> <span class="n">to_keep</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/grid_search_06_00.png" src="../_images/grid_search_06_00.png" />
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sklearn_evaluation.plot.validation_curve">
+<code class="descclassname">sklearn_evaluation.plot.</code><code class="descname">validation_curve</code><span class="sig-paren">(</span><em>train_scores</em>, <em>test_scores</em>, <em>param_range</em>, <em>param_name=None</em>, <em>semilogx=False</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.plot.validation_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a validation curve</p>
+<p>Plot a metric vs hyperpameter values for the training and test set</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>train_scores</strong> : array-like</p>
+<blockquote>
+<div><p>Scores for the training set</p>
+</div></blockquote>
+<p><strong>test_scores</strong> : array-like</p>
+<blockquote>
+<div><p>Scores for the test set</p>
+</div></blockquote>
+<p><strong>param_range</strong> : array-like</p>
+<blockquote>
+<div><p>Hyperparameter values used to generate the curve</p>
+</div></blockquote>
+<p><strong>param_range</strong> : str</p>
+<blockquote>
+<div><p>Hyperparameter name</p>
+</div></blockquote>
+<p><strong>semilgo</strong> : bool</p>
+<blockquote>
+<div><p>Sets a log scale on the x axis</p>
+</div></blockquote>
+<p><strong>ax</strong> : matplotlib Axes</p>
+<blockquote>
+<div><p>Axes object to draw the plot onto, otherwise uses current Axes</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ax: matplotlib Axes</p>
+<blockquote class="last">
+<div><p>Axes containing the plot</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.learning_curve</span> <span class="kn">import</span> <span class="n">validation_curve</span>
+
+<span class="kn">from</span> <span class="nn">sklearn_evaluation</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">param_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">param_name</span> <span class="o">=</span> <span class="s2">&quot;gamma&quot;</span>
+<span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span> <span class="o">=</span> <span class="n">validation_curve</span><span class="p">(</span>
+    <span class="n">SVC</span><span class="p">(),</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">param_name</span><span class="o">=</span><span class="n">param_name</span><span class="p">,</span>
+    <span class="n">param_range</span><span class="o">=</span><span class="n">param_range</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="o">.</span><span class="n">validation_curve</span><span class="p">(</span><span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">param_range</span><span class="p">,</span> <span class="n">param_name</span><span class="p">,</span>
+                      <span class="n">semilogx</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/validation_curve_00_00.png" src="../_images/validation_curve_00_00.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">param_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="n">param_name</span> <span class="o">=</span> <span class="s2">&quot;n_estimators&quot;</span>
+<span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span> <span class="o">=</span> <span class="n">validation_curve</span><span class="p">(</span>
+    <span class="n">RandomForestClassifier</span><span class="p">(),</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+    <span class="n">param_name</span><span class="o">=</span><span class="n">param_name</span><span class="p">,</span>
+    <span class="n">param_range</span><span class="o">=</span><span class="n">param_range</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="o">.</span><span class="n">validation_curve</span><span class="p">(</span><span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">param_range</span><span class="p">,</span> <span class="n">param_name</span><span class="p">,</span>
+                      <span class="n">semilogx</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/validation_curve_01_00.png" src="../_images/validation_curve_01_00.png" />
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sklearn_evaluation.plot.learning_curve">
+<code class="descclassname">sklearn_evaluation.plot.</code><code class="descname">learning_curve</code><span class="sig-paren">(</span><em>train_scores</em>, <em>test_scores</em>, <em>train_sizes</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn_evaluation.plot.learning_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a learning curve</p>
+<p>Plot a metric vs number of examples for the training and test set</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>train_scores</strong> : array-like</p>
+<blockquote>
+<div><p>Scores for the training set</p>
+</div></blockquote>
+<p><strong>test_scores</strong> : array-like</p>
+<blockquote>
+<div><p>Scores for the test set</p>
+</div></blockquote>
+<p><strong>train_sizes</strong> : array-like</p>
+<blockquote>
+<div><p>Relative or absolute numbers of training examples used to generate
+the learning curve</p>
+</div></blockquote>
+<p><strong>ax</strong> : matplotlib Axes</p>
+<blockquote>
+<div><p>Axes object to draw the plot onto, otherwise uses current Axes</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ax: matplotlib Axes</p>
+<blockquote class="last">
+<div><p>Axes containing the plot</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.learning_curve</span> <span class="kn">import</span> <span class="n">learning_curve</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">sklearn_evaluation</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
+
+<span class="c1"># Cross validation with 100 iterations to get smoother mean test and train</span>
+<span class="c1"># score curves, each time with 20% data randomly selected as a validation set.</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                                   <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">train_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span> <span class="o">=</span> <span class="n">learning_curve</span><span class="p">(</span>
+        <span class="n">estimator</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">train_sizes</span><span class="o">=</span><span class="n">train_sizes</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">learning_curve</span><span class="p">(</span><span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">train_sizes</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/learning_curve_00_00.png" src="../_images/learning_curve_00_00.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># SVC is more expensive so we do a lower number of CV iterations:</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                                   <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">train_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span> <span class="o">=</span> <span class="n">learning_curve</span><span class="p">(</span>
+        <span class="n">estimator</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">train_sizes</span><span class="o">=</span><span class="n">train_sizes</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="o">.</span><span class="n">learning_curve</span><span class="p">(</span><span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">train_sizes</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../_images/learning_curve_01_00.png" src="../_images/learning_curve_01_00.png" />
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="table.html" class="btn btn-neutral float-right" title="Tables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../api.html" class="btn btn-neutral" title="API Reference" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eduardo Blancas Reyes.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.4dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
